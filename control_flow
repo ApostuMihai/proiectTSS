@@ -1,0 +1,9 @@
+digraph {
+	Start [label=Start]
+	"Check Input" [label="Check Input"]
+	"Palindrome Check" [label="Palindrome Check"]
+	"Isogram Check" [label="Isogram Check"]
+	Start -> "Check Input"
+	"Check Input" -> "Palindrome Check" [label=1]
+	"Check Input" -> "Isogram Check" [label=2]
+}

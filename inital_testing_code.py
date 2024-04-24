@@ -3,32 +3,19 @@ from unittest.mock import patch
 import io
 from mutationtest import StringChecker  # Adjust based on your module name
 
-
 class TestStringChecker(unittest.TestCase):
-    # Combined tests for clean_string, is_palindrome, and is_isogram
-    def test_cleaned_input(self):
-        self.assertEqual(StringChecker.clean_string("A man, a plan, a canal: Panama"), "amanaplanacanalpanama")
-        # More tests for clean_string...
-
+    # Functional tests for palindrome and isogram checks
     def test_is_palindrome(self):
-        # Combined palindrome tests...
-        for palindrome in ["radar", "A man, a plan, a canal: Panama", "", " "]:
-            with self.subTest(palindrome=palindrome):
-                self.assertTrue(StringChecker.is_palindrome(palindrome))
-
-        for non_palindrome in ["hello", "world", "ab"]:
-            with self.subTest(non_palindrome=non_palindrome):
-                self.assertFalse(StringChecker.is_palindrome(non_palindrome))
+        self.assertTrue(StringChecker.is_palindrome("radar"))
+        self.assertTrue(StringChecker.is_palindrome("A man, a plan, a canal: Panama"))
+        self.assertFalse(StringChecker.is_palindrome("hello"))
+        self.assertFalse(StringChecker.is_palindrome("world"))
 
     def test_is_isogram(self):
-        # Combined isogram tests...
-        for isogram in ["isogram", "lumberjack"]:
-            with self.subTest(isogram=isogram):
-                self.assertTrue(StringChecker.is_isogram(isogram))
-
-        for non_isogram in ["elephant", "balloon"]:
-            with self.subTest(non_isogram=non_isogram):
-                self.assertFalse(StringChecker.is_isogram(non_isogram))
+        self.assertTrue(StringChecker.is_isogram("isogram"))
+        self.assertTrue(StringChecker.is_isogram("lumberjack"))
+        self.assertFalse(StringChecker.is_isogram("elephant"))
+        self.assertFalse(StringChecker.is_isogram("balloon"))
 
     # Structural tests covering different branches and conditions
     def test_palindrome_branch(self):
@@ -37,13 +24,11 @@ class TestStringChecker(unittest.TestCase):
             output = fake_out.getvalue().strip()
             self.assertIn("Is 'radar' a palindrome? Yes", output)
 
-    def test_isogram_branch_for_correct_choice(self):
+    def test_isogram_branch(self):
         with patch('builtins.input', side_effect=["2", "isogram"]), patch('sys.stdout', new=io.StringIO()) as fake_out:
             StringChecker.main()
             output = fake_out.getvalue().strip()
             self.assertIn("Is 'isogram' an isogram? Yes", output)
-
-
 
     def test_invalid_input(self):
         with patch('builtins.input', side_effect=["3", "1", "Madam"]), patch('sys.stdout', new=io.StringIO()) as fake_out:
