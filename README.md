@@ -17,8 +17,7 @@ Utilizatorul poate sa aleaga intre verificarea daca un sir introdus de la tastat
 # TABEL
 
 <table>
-  <tr><th colspan=2>Intrari</th></tr>
-  <th>Rezultat</th>
+  <tr><th colspan=2>Intrari</th><th>Rezultat</th></tr>
   <tr><td>n</td><td>x</td></tr>
   <tr><td>t</td><td></td></tr>
   <tr><td>3</td><td></td></tr>
