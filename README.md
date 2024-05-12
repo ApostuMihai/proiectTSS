@@ -28,12 +28,6 @@ Pentru x se disting 2 clase de echivalenta: lungimea lui x este mai mare sau ega
 Domeniul de iesiri are urmatoarele raspunsuri:
 Raspunsul daca stringul dat este palindrom sau isogram
 
-# Testare structurala, graful CFG
-
-![alt text](https://imgur.com/Fe7mfub "CFG Graph ")
-
-# TABEL
-
 <table>
   <tr><th colspan=2>Intrari</th><th>Rezultat</th></tr>
   <tr><td>n</td><td>x</td></tr>
@@ -43,9 +37,23 @@ Raspunsul daca stringul dat este palindrom sau isogram
   <tr><td>2</td><td>abca</td><td>No</td></tr>
   <tr><td>1</td><td>radar</td><td>Yes</td></tr>
   <tr><td>1</td><td>Hello</td><td>No</td></tr>
-  
-  
-  
-  
-  
-  </table>
+</table>
+
+# Testare structurala, graful CFG
+
+Todo
+
+Am creat graful pentru functia main si am dedus ca putem folosi doar 2 teste pentru a acoperi tot codul
+
+# Mutanti
+
+Am folosit libraria mutmut pentru testele cu mutanti.
+
+
+# Raport utilizare tool AI:
+
+Am folosit Microsoft Copilot pentru a genera teste pentru codul nostru. Acestea sunt testele generate:
+
+TODO IMAGINE AICI
+
+O diferenta intre codul nostru si cel generat de AI este ca noi am folosit unittest, iar Copilot a folosit pytest. De asemenea codul de la Copilot nu parcurge functia main si ofera doar cateva teste cu coverage mic.
