@@ -22,13 +22,13 @@ Utilizatorul poate sa aleaga intre verificarea daca un sir introdus de la tastat
   <tr><td>n</td><td>x</td></tr>
   <tr><td>t</td><td></td></tr>
   <tr><td>3</td><td></td></tr>
-  <tr><td>2</td><td>isogram</td></tr>
-  <tr><td>2</td><td>abca</td></tr>
-  <tr><td>1</td><td>radar</td></tr>
-  <tr><td>1</td><td>Hello</td></tr>
+  <tr><td>2</td><td>isogram</td><td>Yes</td></tr>
+  <tr><td>2</td><td>abca</td><td>No</td></tr>
+  <tr><td>1</td><td>radar</td><td>Yes</td></tr>
+  <tr><td>1</td><td>Hello</td><td>No</td></tr>
   
-  <td>Yes</td>
-  <td>No</td>
-  <td>Yes</td>
-  <td>No</td>
+  
+  
+  
+  
   </table>
