@@ -18,6 +18,7 @@ Utilizatorul poate sa aleaga intre verificarea daca un sir introdus de la tastat
 
 <table>
   <tr><th colspan=2>Intrari</th></tr>
+  <tr><th>Rezultat</th></tr>
   <tr><td>n</td><td>x</td></tr>
   <tr><td>t</td><td></td></tr>
   <tr><td>3</td><td></td></tr>
@@ -25,7 +26,7 @@ Utilizatorul poate sa aleaga intre verificarea daca un sir introdus de la tastat
   <tr><td>2</td><td>abca</td></tr>
   <tr><td>1</td><td>radar</td></tr>
   <tr><td>1</td><td>Hello</td></tr>
-  <th>Rezultat</th>
+  
   <td>Yes</td>
   <td>No</td>
   <td>Yes</td>
