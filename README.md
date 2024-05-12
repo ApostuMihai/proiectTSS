@@ -25,4 +25,9 @@ Utilizatorul poate sa aleaga intre verificarea daca un sir introdus de la tastat
   <tr><td>2</td><td>abca</td></tr>
   <tr><td>1</td><td>radar</td></tr>
   <tr><td>1</td><td>Hello</td></tr>
+  <th>Rezultat</th>
+  <td>Yes</td>
+  <td>No</td>
+  <td>Yes</td>
+  <td>No</td>
   </table>
