@@ -30,7 +30,7 @@ Raspunsul daca stringul dat este palindrom sau isogram
 
 # Testare structurala, graful CFG
 
-![alt text](https://imgur.com/Fe7mfub "Logo Title Text 1 "CFG Graph ")
+![alt text](https://imgur.com/Fe7mfub "CFG Graph ")
 
 # TABEL
 
