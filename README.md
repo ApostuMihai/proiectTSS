@@ -1,6 +1,7 @@
 # ProiectTSS
  Proiect pentru materia "Testarea sistemelor software"
-
+ 
+ Demo-ul poate fi gasit aici: [CLICK](https://drive.google.com/file/d/1JiF966gVVccqY5-fwnIlKby7l8-UFabV/view?usp=drive_link)
 # Descrierea aplicatiei
 
 Aplicatia noastra ofera doua funcitonalitati pentru analiza sirurilor de caractere:
@@ -40,20 +41,27 @@ Raspunsul daca stringul dat este palindrom sau isogram
 </table>
 
 # Testare structurala, graful CFG
+![main](https://github.com/ApostuMihai/proiectTSS/blob/main/poze/main.jpg "main")
+![graf](https://github.com/ApostuMihai/proiectTSS/blob/main/poze/graf.jpg "graf")
 
-Todo
 
 Am creat graful pentru functia main si am dedus ca putem folosi doar 2 teste pentru a acoperi tot codul
+
+![Coverage](https://github.com/ApostuMihai/proiectTSS/blob/main/poze/coverage.jpg "Coverage")
 
 # Mutanti
 
 Am folosit libraria mutmut pentru testele cu mutanti.
+
+![mutanti](https://github.com/ApostuMihai/proiectTSS/blob/main/poze/mutanti.jpg "Mutanti")
 
 
 # Raport utilizare tool AI:
 
 Am folosit Microsoft Copilot pentru a genera teste pentru codul nostru. Acestea sunt testele generate:
 
-TODO IMAGINE AICI
+![copilot](https://github.com/ApostuMihai/proiectTSS/blob/main/poze/cod_copilot.jpg "Copilot")
 
 O diferenta intre codul nostru si cel generat de AI este ca noi am folosit unittest, iar Copilot a folosit pytest. De asemenea codul de la Copilot nu parcurge functia main si ofera doar cateva teste cu coverage mic.
+
+![Coverage copilot](https://github.com/ApostuMihai/proiectTSS/blob/main/poze/coverage_copilot.jpg "Coverage copilot")
