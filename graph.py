@@ -13,4 +13,4 @@ dot.edge('B', 'D', label='No', constraint='false')
 dot.edge('C', 'D', label='Yes')
 dot.edge('C', 'D', label='No', constraint='false')
 
-dot.render('output.gv', view=True)  # Save and render the graph, and optionally open it.
+dot.render('output.gv', view=True)  
