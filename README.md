@@ -1,6 +1,6 @@
 # ProiectTSS
  Proiect pentru materia "Testarea sistemelor software"
-
+ Demo-ul poate fi gasit aici: [CLICK](https://drive.google.com/file/d/1JiF966gVVccqY5-fwnIlKby7l8-UFabV/view?usp=drive_link)
 # Descrierea aplicatiei
 
 Aplicatia noastra ofera doua funcitonalitati pentru analiza sirurilor de caractere:
