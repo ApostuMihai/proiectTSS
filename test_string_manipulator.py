@@ -1,62 +1,76 @@
 import unittest
 from unittest.mock import patch
-import io
-from mutationtest import StringChecker  # Adjust based on your module name
-
+from io import StringIO
+from string_manipulator import StringChecker
 
 class TestStringChecker(unittest.TestCase):
-    # Combined tests for clean_string, is_palindrome, and is_isogram
-    def test_cleaned_input(self):
-        self.assertEqual(StringChecker.clean_string("A man, a plan, a canal: Panama"), "amanaplanacanalpanama")
-        # More tests for clean_string...
+    def setUp(self):
+        self.checker = StringChecker()
+
+#teste acoperire cod
+    @patch('sys.stdout', new_callable=StringIO)
+    @patch('builtins.input', side_effect=["3","1", "racecar"])
+    def test_main_palindrome(self, mock_input, mock_stdout):
+        self.checker.main()
+        self.assertIn("Is 'racecar' a palindrome? Yes", mock_stdout.getvalue())
+
+    @patch('sys.stdout', new_callable=StringIO)
+    @patch('builtins.input', side_effect=["da","2","L","Lumberjacks"])
+    def test_main_fail2(self, mock_input, mock_stdout):
+        self.checker.main()
+        self.assertIn("Is 'lumberjacks' an isogram? Yes", mock_stdout.getvalue())
+
+#testare functionala
+
+    def test_string_cleaner(self):
+        self.assertEqual(self.checker.clean_string("Good morning!! How are you?"), "goodmorninghowareyou")
+        self.assertEqual(self.checker.clean_string("HELLO WORLD"), "helloworld")
+        self.assertEqual(self.checker.clean_string("!@#$%^&*()_+="), "")
+        self.assertEqual(self.checker.clean_string("hello"), "hello")
+        self.assertEqual(self.checker.clean_string(""), "")
 
     def test_is_palindrome(self):
-        # Combined palindrome tests...
-        for palindrome in ["radar", "A man, a plan, a canal: Panama", "", " "]:
-            with self.subTest(palindrome=palindrome):
-                self.assertTrue(StringChecker.is_palindrome(palindrome))
-
-        for non_palindrome in ["hello", "world", "ab"]:
-            with self.subTest(non_palindrome=non_palindrome):
-                self.assertFalse(StringChecker.is_palindrome(non_palindrome))
+        self.assertTrue(self.checker.is_palindrome("radar"))
+        self.assertTrue(self.checker.is_palindrome("We panic in a pew"))
+        self.assertTrue(self.checker.is_palindrome("123!21"))
+        self.assertTrue(self.checker.is_palindrome(""))
+        self.assertFalse(self.checker.is_palindrome("radars"))
 
     def test_is_isogram(self):
-        # Combined isogram tests...
-        for isogram in ["isogram", "lumberjack"]:
-            with self.subTest(isogram=isogram):
-                self.assertTrue(StringChecker.is_isogram(isogram))
-
-        for non_isogram in ["elephant", "balloon"]:
-            with self.subTest(non_isogram=non_isogram):
-                self.assertFalse(StringChecker.is_isogram(non_isogram))
-
-    # Structural tests covering different branches and conditions
-    def test_palindrome_branch(self):
-        with patch('builtins.input', side_effect=["1", "radar"]), patch('sys.stdout', new=io.StringIO()) as fake_out:
-            StringChecker.main()
-            output = fake_out.getvalue().strip()
-            self.assertIn("Is 'radar' a palindrome? Yes", output)
-
-    def test_isogram_branch_for_correct_choice(self):
-        with patch('builtins.input', side_effect=["2", "isogram"]), patch('sys.stdout', new=io.StringIO()) as fake_out:
-            StringChecker.main()
-            output = fake_out.getvalue().strip()
-            self.assertIn("Is 'isogram' an isogram? Yes", output)
+        self.assertTrue(self.checker.is_isogram("isogram"))
+        self.assertTrue(self.checker.is_isogram("!a!"))
+        self.assertFalse(self.checker.is_isogram("123!21"))
+        self.assertTrue(self.checker.is_isogram(""))
 
 
+    @patch('sys.stdout', new_callable=StringIO)
+    @patch('builtins.input', side_effect=["1","a","a!!", "aa"])
+    def test_boundary_values(self, mock_input, mock_stdout):
+        self.checker.main()
+        self.assertIn("The string must be at least 2 characters long. Please try again.", mock_stdout.getvalue())
+        self.assertIn("Is 'aa' a palindrome? Yes", mock_stdout.getvalue())
 
-    def test_invalid_input(self):
-        with patch('builtins.input', side_effect=["3", "1", "Madam"]), patch('sys.stdout', new=io.StringIO()) as fake_out:
-            StringChecker.main()
-            output = fake_out.getvalue().strip()
-            self.assertIn("Please enter either 1 or 2.", output)
-            self.assertIn("Is 'Madam' a palindrome? Yes", output)
+    @patch('sys.stdout', new_callable=StringIO)
+    @patch('builtins.input', side_effect=["3","2", "12345"])
+    def test_equivalence_partitions(self, mock_input, mock_stdout):
+        self.checker.main()
+        self.assertIn("Please enter either 1 or 2.", mock_stdout.getvalue())
+        self.assertIn("Is '12345' an isogram? Yes", mock_stdout.getvalue())
 
-    def test_empty_string_palindrome(self):
-        with patch('builtins.input', side_effect=["1", ""]), patch('sys.stdout', new=io.StringIO()) as fake_out:
-            StringChecker.main()
-            output = fake_out.getvalue().strip()
-            self.assertIn("Is '' a palindrome? Yes", output)
+    @patch('sys.stdout', new_callable=StringIO)
+    @patch('builtins.input', side_effect=["da","2", "Hello",])
+    def test_category_partition(self, mock_input, mock_stdout):
+        self.checker.main()
+        self.assertIn("Invalid input. Please enter a number.", mock_stdout.getvalue())
+        self.assertIn("Is 'hello' an isogram? No", mock_stdout.getvalue())
 
-if __name__ == "__main__":
+    @patch('sys.stdout', new_callable=StringIO)
+    @patch('builtins.input', side_effect=["1", "a", "racecar"])
+    def test_input_less_than_two_chars(self, mock_input, mock_stdout):
+        self.checker.main()
+        output = mock_stdout.getvalue()
+        self.assertIn("The string must be at least 2 characters long. Please try again.", output)
+        self.assertIn("Is 'racecar' a palindrome? Yes", output)
+
+if __name__ == '__main__':
     unittest.main()
